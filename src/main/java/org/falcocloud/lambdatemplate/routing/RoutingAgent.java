@@ -8,14 +8,14 @@ import org.falcocloud.lambdatemplate.filters.FilterException;
 import org.falcocloud.lambdatemplate.filters.FilterQueue;
 import org.falcocloud.lambdatemplate.model.lambda.APIGatewayProxyRequest;
 import org.falcocloud.lambdatemplate.model.service.ServiceResponse;
+import org.falcocloud.lambdatemplate.routing.routes.DefaultRoute;
 import org.falcocloud.lambdatemplate.routing.routes.Route;
 
 import java.util.Map;
 
 @Builder
 public class RoutingAgent {
-  private static final ImmutablePair<String, String> DEFAULT_ENVIRONMENT_KEY_PAIR =
-      ImmutablePair.of("/invalidpath/default", "DEFAULT");
+
   private final Map<Pair<String, String>, Route> routes;
   @NonNull private FilterQueue preFilters;
 
@@ -35,7 +35,7 @@ public class RoutingAgent {
     return routes
         .getOrDefault(
             ImmutablePair.of(request.getResource(), request.getHttpMethod()),
-            routes.get(DEFAULT_ENVIRONMENT_KEY_PAIR))
+            routes.get(DefaultRoute.RESOURCE_HTTP_METHOD_PAIR))
         .process(request);
   }
 }
