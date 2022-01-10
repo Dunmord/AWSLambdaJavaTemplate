@@ -95,6 +95,10 @@
             <artifactId>aws-lambda-java-core</artifactId>
             <version>${aws.lambda.java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>lambda</artifactId>
+        </dependency>
 
         <!-- Test Dependencies -->
         <dependency>
