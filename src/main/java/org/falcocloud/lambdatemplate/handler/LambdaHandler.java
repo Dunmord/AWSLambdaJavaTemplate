@@ -29,6 +29,7 @@ public class LambdaHandler
     routingAgent =
         RoutingAgent.builder()
             .preFilters(getAllPreFilters())
+            .postFilters(getAllPostFilters())
             .routes(Map.of(DefaultRoute.RESOURCE_HTTP_METHOD_PAIR, DefaultRoute.builder().build()))
             .build();
     // Consider invoking a simple api here to pre-warm up the application, eg: dynamodb#listTables
@@ -40,6 +41,7 @@ public class LambdaHandler
     routingAgent =
         RoutingAgent.builder()
             .preFilters(getAllPreFilters())
+            .postFilters(getAllPostFilters())
             .routes(Map.of(DefaultRoute.RESOURCE_HTTP_METHOD_PAIR, DefaultRoute.builder().build()))
             .build();
   }
